@@ -9,7 +9,12 @@ import study.spring.Repository.MemoryMemberRepository;
 
 public class MemberService {
 
-	private final MemberRepository memberRepository = new MemoryMemberRepository();
+	private MemberRepository memberRepository = new MemoryMemberRepository();
+	// 강의와 달리 final 넣으면 아래 MemberService 안 돼서 일단 뻄
+	
+	public MemberService(MemberRepository memberRepository) {
+		this.memberRepository = memberRepository;
+	}
 	
 	// 회원 가입
 	public Long join(Member member) {
