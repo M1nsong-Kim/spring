@@ -1,7 +1,7 @@
 package study.spring.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -38,7 +38,13 @@ public class MemberServiceTest {
 		
 		// when
 		memberService.join(member1);
-		try {			
+		// IllegarStateException 예외가 나와야 함 -> JUnit test 실행 시 성공(초록)
+		assertThrows(IllegalStateException.class, () ->  memberService.join(member2));
+		// JUnit 실행 시 실패
+		// assertThrows(NullPointerException.class, () ->  memberService.join(member2));
+		
+		/*
+		try 
 			memberService.join(member2);
 			fail();
 		}catch(IllegalStateException e) {
@@ -46,6 +52,7 @@ public class MemberServiceTest {
 			// 메시지와 다름 -> JUnit test 실행 시 실패(빨강)
 			assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.11");
 		}
+		 */
 		
 		// then
 	}
