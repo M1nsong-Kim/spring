@@ -32,7 +32,7 @@ public class MemberController {
 	 2. 필드 주입: 필드 앞에만 @Autowired
 	 	바꿀 수 있는 방법이 없다 그대로 필드를 가져오기만 함
 	 3. setter 주입: setter 위에 @Autowired
-	 	public으로 노출 됨 - 잘못 바꾸면 문제 생길 우려
+	 	public으로 노출 됨 - 아무나 호출 가능 - 잘못 바꾸면 문제 생길 우려
 	 	setter는 사실 한 번 생기면 바꿀 이유가 없다
 	 */
 }
