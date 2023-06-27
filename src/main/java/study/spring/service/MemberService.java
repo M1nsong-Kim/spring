@@ -10,13 +10,13 @@ import study.spring.Domain.Member;
 import study.spring.Repository.MemberRepository;
 import study.spring.Repository.MemoryMemberRepository;
 
-@Service 
+// @Service
 public class MemberService {
 
 	private MemberRepository memberRepository = new MemoryMemberRepository();
 	// 강의와 달리 final 넣으면 아래 MemberService 안 돼서 일단 뻄
 	
-	@Autowired	// 스프링 컨테이너에 있는 memberRepository를 연결시켜줌 (서비스에 주입해줌)
+	// @Autowired	// 스프링 컨테이너에 있는 memberRepository를 연결시켜줌 (서비스에 주입해줌)
 	public MemberService(MemberRepository memberRepository) {
 		this.memberRepository = memberRepository;
 	}
