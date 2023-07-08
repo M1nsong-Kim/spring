@@ -16,6 +16,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	/* MariaDB */
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation('org.mariadb.jdbc:mariadb-java-client:2.1.2')
 }
 // gradle과 같은 빌드 도구들은 의존 관계에 있는 모든 라이브러리들을 다 가져온다
 /*
