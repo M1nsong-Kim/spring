@@ -34,6 +34,10 @@ dependencies {
 		spring test
 */
 
+/*
+	강의는 H2를 사용하지만 MariaDB로 진행
+*/
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
