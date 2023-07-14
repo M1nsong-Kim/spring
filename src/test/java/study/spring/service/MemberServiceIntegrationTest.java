@@ -48,3 +48,5 @@ public class MemberServiceIntegrationTest {
 	}
 	
 }
+
+// 하지만 통합 테스트마다 단위 테스트 하나하나를 잘 하는 게 더 중요
