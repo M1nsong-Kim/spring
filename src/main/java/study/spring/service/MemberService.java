@@ -30,7 +30,7 @@ public class MemberService {
 								throw new IllegalStateException("이미 존재하는 회원입니다.");
 							});	// 만약 값이 있으면 예외 발생(if null 안 쓰고 optional 메서드 씀)
 		 */
-		validateDuplicateMember(member);
+		validateDuplicateMember(member);	// 중복 회원 검증
 		memberRepository.save(member);
 		return member.getId();
 	}

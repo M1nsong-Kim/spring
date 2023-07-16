@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import study.spring.Domain.Member;
@@ -22,6 +23,7 @@ public class MemberServiceIntegrationTest {
 
 	// 보통 실전에선 테스트용 DB를 따로 두고 삭제 삽입 반복(테스트는 반복이 중요) -> transactional이 테스트 끝나면 자동으로 롤백해줘서 편리(테스트에서만)
 	@Test
+	@Commit // DB에 반영
 	void 회원가입() {
 		 //Given
 		 Member member = new Member();
@@ -48,5 +50,6 @@ public class MemberServiceIntegrationTest {
 	}
 	
 }
+// jpa 추가 후 실행하면 Hibernate: select member0_.id as id1_0_, member0_.name as name2_0_ from member member0_ where member0_.name=? 이런 식으로 쿼리 확인 가능
 
 // 하지만 통합 테스트마다 단위 테스트 하나하나를 잘 하는 게 더 중요

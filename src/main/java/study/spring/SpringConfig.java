@@ -1,23 +1,23 @@
 package study.spring;
 
-import javax.sql.DataSource;
+import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import study.spring.Repository.JdbcTemplateMemberRepository;
+import study.spring.Repository.JpaMemberRepository;
 import study.spring.Repository.MemberRepository;
 import study.spring.service.MemberService;
 
 @Configuration
 public class SpringConfig {
 
-	private DataSource dataSource;
+	private EntityManager em;
 	
 	@Autowired
-	public SpringConfig(DataSource dataSource) {
-		this.dataSource = dataSource;
+	public SpringConfig(EntityManager em) {
+		this.em = em;
 	}
 	
 	@Bean
@@ -29,6 +29,7 @@ public class SpringConfig {
 	public MemberRepository memberRepository() {
 		// return new MemoryMemberRepository();
 		// return new JdbcMemberRepository(dataSource);	// 메모리가 아니라 DB로
-		return new JdbcTemplateMemberRepository(dataSource);
+		// return new JdbcTemplateMemberRepository(dataSource);
+		return new JpaMemberRepository(em);
 	}
 }
