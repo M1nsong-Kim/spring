@@ -23,17 +23,25 @@ public class MemberService {
 	
 	// 회원 가입
 	public Long join(Member member) {
-		// 동명이인 중복 회원 x
-		/*
-		Optional<Member> result = memberRepository.findByName(member.getName());
-		result.ifPresent(m ->{
-								throw new IllegalStateException("이미 존재하는 회원입니다.");
-							});	// 만약 값이 있으면 예외 발생(if null 안 쓰고 optional 메서드 씀)
-		 */
-		validateDuplicateMember(member);	// 중복 회원 검증
-		memberRepository.save(member);
-		return member.getId();
+		long start = System.currentTimeMillis();
+		try {		
+			validateDuplicateMember(member);	// 중복 회원 검증
+			memberRepository.save(member);
+			return member.getId();
+		}finally {
+			long finish = System.currentTimeMillis();
+			long timeMs = finish - start;
+			System.out.println("join = " + timeMs + "ms");
+		}
 	}
+	/*	 
+	시간 측정 로직
+		- 모든 메서드에 적용하기엔 무리가 있음(하드코딩) 
+		- 시간 측정 로직은 핵심 관심 사항이 아니라 공통 관심 사항
+		- 유지 보수가 어려움
+	=> AOP로 해결 가능
+	 */
+	
 	
 	// 위 메서드의 주석 부분을 메서드로 분리
 	private void validateDuplicateMember(Member member){
