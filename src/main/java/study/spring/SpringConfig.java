@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import study.spring.Repository.MemberRepository;
+import study.spring.aop.TimeTraceAop;
 import study.spring.service.MemberService;
 
 @Configuration
@@ -19,6 +20,11 @@ public class SpringConfig {
 	@Bean
 	public MemberService memberService() {
 		return new MemberService(memberRepository);
+	}
+	
+	// bean에 등록하는 방법 2: spring config
+	public TimeTraceAop TimeTraceAop() {
+		return new TimeTraceAop();
 	}
 	
 	/*

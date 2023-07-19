@@ -22,19 +22,12 @@ public class MemberService {
 	}
 	
 	// 회원 가입
-	public Long join(Member member) {
-		long start = System.currentTimeMillis();
-		try {		
-			validateDuplicateMember(member);	// 중복 회원 검증
-			memberRepository.save(member);
-			return member.getId();
-		}finally {
-			long finish = System.currentTimeMillis();
-			long timeMs = finish - start;
-			System.out.println("join = " + timeMs + "ms");
-		}
+	public Long join(Member member) {	
+		validateDuplicateMember(member);	// 중복 회원 검증
+		memberRepository.save(member);
+		return member.getId();
 	}
-	/*	 
+	/*	  
 	시간 측정 로직
 		- 모든 메서드에 적용하기엔 무리가 있음(하드코딩) 
 		- 시간 측정 로직은 핵심 관심 사항이 아니라 공통 관심 사항
